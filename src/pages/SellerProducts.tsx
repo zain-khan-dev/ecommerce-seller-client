@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getData } from "../utills/utilityFunc"
+import { getAuthData } from "../utills/utilityFunc"
 import ProductCard from "../component/ProductCard"
 import Grid from '@mui/material/Grid';
 
@@ -37,7 +37,7 @@ const SellerProducts = () => {
 
 
     useEffect(() => {
-        getData("product")
+        getAuthData("product")
         .then((result)=>{
             setProducts(result.data)
         })

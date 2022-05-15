@@ -2,13 +2,6 @@ import axios, { AxiosResponse, AxiosPromise, AxiosInstance, AxiosRequestHeaders 
 import {BASE_URL} from "./Constants"
 
 
-
-interface axiosInstanceConfig {
-    baseURL:string;
-    headers:AxiosRequestHeaders;
-}
-
-
 export const getAxiosInstance = ():AxiosInstance    => {
 
     const axiosInstance = 
@@ -53,51 +46,34 @@ export const getAxiosInstance = ():AxiosInstance    => {
 
 
 
-
+export const postAuthData = async (postURL:string, data:Object):Promise<AxiosResponse<any,any>> => {
+    return await axios.post(postURL, data)
+}
 
 
 export const postData = async (postURL:string, data:Object):Promise<AxiosResponse<any,any>> => {
+    return await getAxiosInstance().post(postURL, data)
+}
 
 
-    return await getAxiosInstance()
-    .post(postURL, data)
+export const getAuthData = async(getURL:string):Promise<AxiosResponse<any,any>> => {
 
-    // return await axios({
-    //     method:"post",
-    //     url:postURL,
-    //     data:data,
-    //     headers: { "Content-Type": "multipart/form-data"},
-    // })
+
+    return await getAxiosInstance().get(getURL)
+
 }
 
 
 export const getData = async(getURL:string):Promise<AxiosResponse<any,any>> => {
 
 
-    return await getAxiosInstance()
-    .get(getURL)
-
-    // return await axios({
-    //     method:"get",
-    //     url:getURL,
-    //     headers: { }
-    // })
+    return await axios.get(getURL)
 
 }
 
 
 
 export const deleteData = async(deleteURL:string, id:number):Promise<AxiosResponse<any,any>> => {
-
-
-    return await getAxiosInstance()
-    .delete(`${deleteURL}${id}`)
-
-    // return await axios({
-    //     method:"delete",
-    //     url:`${deleteURL}${id}`,
-    //     headers: { "Authorization":`Bearer ${localStorage.getItem("access_token")}`}
-    // })
-
+    return await getAxiosInstance().delete(`${deleteURL}${id}`)
 }
 

@@ -6,6 +6,7 @@ import { Container } from "@mui/material";
 import SellerProducts from "./pages/SellerProducts";
 import LoginForm from "./component/LoginForm"
 import CreateProduct from "./component/CreateProduct";
+import SellerOrders from "./pages/SellerOrders";
 function App() {
   return (
     <Router>
@@ -16,7 +17,7 @@ function App() {
           <Route path="/products" element={<SellerProducts />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/createProduct" element={<CreateProduct />} />
-          {/* <Route path="/editProduct/:id" element={<EditProduct />} /> */}
+          <Route path="/orders" element={<SellerOrders />} />
         </Routes>
       </Container>
     </Router>
