@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik';
-import {postData} from "../utills/utilityFunc"
+import {postData} from "../utils/utilityFunc"
 import { Label } from '@mui/icons-material';
 import { FormLabel } from '@mui/material';
 

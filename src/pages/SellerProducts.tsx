@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAuthData } from "../utills/utilityFunc"
+import { getAuthData } from "../utils/utilityFunc"
 import ProductCard from "../component/ProductCard"
 import Grid from '@mui/material/Grid';
 
-import {deleteData} from "../utills/utilityFunc"
+import {deleteData} from "../utils/utilityFunc"
 
 interface ProductSchema {
     description:string;

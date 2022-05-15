@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { postData } from "../utills/utilityFunc"
+import { postData } from "../utils/utilityFunc"
 
 const CreateProduct = () => {
     
