@@ -2,23 +2,46 @@ import { useEffect, useState } from "react"
 import { getAuthData } from "../utils/utilityFunc"
 import ProductCard from "../component/ProductCard"
 import Grid from '@mui/material/Grid';
-
+import {ProductSchema} from "../utils/Constants"
 import {deleteData} from "../utils/utilityFunc"
-
-interface ProductSchema {
-    description:string;
-    name:string;
-    seller:string;
-    stars:number;
-    id:number;
-}
+import { useSelector, useDispatch } from "react-redux";
+import {RootState} from "../reducer/store"
+import {getProducts} from "../utils/utilityFunc"
+import {setProduct} from "../reducer/ProductSlice"
 
 
 const SellerProducts = () => {
 
 
-    const [products, setProducts] = useState<ProductSchema[]>([])
+    let products = useSelector((state: RootState) => state.products.productList)
+    console.log(products)
+    const dispatch = useDispatch()
 
+    const [productView, setProductView] = useState(products)
+
+
+    useEffect(()=>{
+
+        if(products.length == 0){
+            console.log("here")
+            getProducts()
+            .then((result)=>{
+                console.log(result)
+                const productList:ProductSchema[] = result.data as ProductSchema[]
+                console.log(productList)
+                dispatch(setProduct(productList))
+                setProductView(productList)
+            })
+            .catch((e)=>{
+                console.log("error occured")
+                return []
+            })
+        }
+        else{
+            console.log("now here")
+        }
+
+    }, [])
 
 
 
@@ -31,23 +54,17 @@ const SellerProducts = () => {
         .catch((e)=>{
             console.log("Failed to delete product with error "+ e)
         })
-        setProducts(products.filter(product => product.id != id))
+        dispatch(setProduct(productView.filter(product => product.id != id)))
 
     }
 
 
     useEffect(() => {
-        getAuthData("product")
-        .then((result)=>{
-            setProducts(result.data)
-        })
-        .catch((e)=>{
-            console.log("failed with error "+ e)
-        })
+
     }, [])
 
 
-    if(products.length == 0){
+    if(productView.length == 0){
         console.log(products)
         return(
             <div>Loading</div>
@@ -56,7 +73,7 @@ const SellerProducts = () => {
     else{
         return(
             <Grid container sx={{m:2}} spacing={4}>
-                {products.map((product => {
+                {productView.map((product => {
                     return (
                         <Grid item md={2} xs={8}><ProductCard product={product} deleteFunc={deleteProduct} /></Grid>
                     )

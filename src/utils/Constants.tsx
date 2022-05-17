@@ -2,10 +2,14 @@ export const BASE_URL:string = "http://localhost:8000/ecommerce/"
 
 
 
-interface Product {
-    name:string;
+export interface ProductSchema {
     description:string;
+    name:string;
+    seller:string;
+    stars:number;
+    id:number;
 }
+
 
 
 export interface OrderSchema {
@@ -13,7 +17,7 @@ export interface OrderSchema {
     order_ts:string;
     bought_at:number;
     quantity:number;
-    product_id: Product
+    product_id: ProductSchema
 }
 
 export const orderStatus = [

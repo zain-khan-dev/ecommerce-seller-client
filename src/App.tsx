@@ -7,6 +7,7 @@ import SellerProducts from "./pages/SellerProducts";
 import LoginForm from "./component/LoginForm"
 import CreateProduct from "./component/CreateProduct";
 import SellerOrders from "./pages/SellerOrders";
+import ProductEdit from "./pages/ProductEdit";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/createProduct" element={<CreateProduct />} />
           <Route path="/orders" element={<SellerOrders />} />
+          <Route path="/productEdit/:id" element={<ProductEdit />} />
         </Routes>
       </Container>
     </Router>

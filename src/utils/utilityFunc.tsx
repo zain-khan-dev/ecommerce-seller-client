@@ -1,6 +1,8 @@
 import axios, { AxiosResponse, AxiosPromise, AxiosInstance, AxiosRequestHeaders } from "axios"
+import { useDispatch } from "react-redux"
+import { setProduct } from "../reducer/ProductSlice"
 import {BASE_URL} from "./Constants"
-
+import { ProductSchema } from "./Constants"
 
 export const getAxiosInstance = ():AxiosInstance    => {
 
@@ -41,6 +43,18 @@ export const getAxiosInstance = ():AxiosInstance    => {
         }
     )
     return axiosInstance
+}
+
+
+
+
+// export const getProducts = async ():<AxiosResponse<any, any> => {
+//     const result = await getAuthData("product")
+//     return result.data
+// }
+
+export const getProducts =  async ():Promise<AxiosResponse<any, any>> => {
+    return await getAuthData("product")
 }
 
 

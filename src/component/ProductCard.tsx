@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import {Link} from "react-router-dom"
 
 interface ProductSchema {
     description:string;
@@ -52,7 +52,7 @@ const ProductCard:React.FC<Prop> = (prop:Prop) => {
                 </Typography>
             </CardContent>
             <CardActions sx={{display:"flex",mx:2, justifyContent:"space-between"}}>
-                <Button variant="contained" size="small">Edit</Button>
+                <div ><Link to="/productEdit/1" >Edit</Link></div>
                 <Button onClick={handleDelete} variant="contained" color = "secondary" size="small">Delete</Button>
             </CardActions>
         </Card>
