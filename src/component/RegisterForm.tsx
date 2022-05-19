@@ -2,8 +2,12 @@ import { Formik, Field, Form } from 'formik';
 import {UserLoginDetails} from "../utils/Constants"
 import {postData} from "../utils/utilityFunc"
 import { UserRegisterDetails } from '../utils/Constants';
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate()
+
     return (
 
       <div className="width-full max-w-md bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
@@ -22,6 +26,7 @@ const RegisterForm = () => {
             postData("http://localhost:8000/ecommerce/seller/", sellerDetail)
             .then((result) => {
                 console.log(result)
+                navigate('/login')
             })
             .catch((e) => {
                 console.log(e)

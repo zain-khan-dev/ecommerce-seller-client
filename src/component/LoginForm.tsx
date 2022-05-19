@@ -1,10 +1,16 @@
 import { Formik, Field, Form } from 'formik';
 import {UserLoginDetails} from "../utils/Constants"
 import {postData} from "../utils/utilityFunc"
+import { useDispatch } from 'react-redux';
+import { setLoggedState } from '../reducer/LoginSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Basic = () => {
 
   
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
     return (
 
       <div className="width-full max-w-xs bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
@@ -22,6 +28,8 @@ const Basic = () => {
                 console.log(result.data["access"])
                 localStorage.setItem("access_token", result.data["access"])
                 localStorage.setItem("refresh_token", result.data["refresh"])
+                dispatch(setLoggedState(true))
+                navigate("/dashboard")
                 
             })
             .catch((e) => {

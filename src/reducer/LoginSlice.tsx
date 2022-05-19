@@ -14,7 +14,7 @@ export const loggedSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setProduct: (state, action: PayloadAction<boolean>) => {
+    setLoggedState: (state, action: PayloadAction<boolean>) => {
         console.log("setting product", action.payload)
         state.isLogged   = action.payload
     },
@@ -22,6 +22,6 @@ export const loggedSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setProduct } = loggedSlice.actions
+export const { setLoggedState } = loggedSlice.actions
 
 export default loggedSlice.reducer
