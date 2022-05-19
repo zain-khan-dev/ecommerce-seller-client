@@ -68,10 +68,11 @@ const SellerProducts = () => {
     }
     else{
         return(
-            <div >
+            <div className="grid md:grid-cols-5 grid-cols-1 content-center text-center" >
+                <ProductCard product={productView[0]} deleteFunc={deleteProduct} />
                 {productView.map((product => {
                     return (
-                        <div ><ProductCard product={product} deleteFunc={deleteProduct} /></div>
+                        <ProductCard product={product} deleteFunc={deleteProduct} />
                     )
                 }))}
                 {/* <Grid item md={2} xs={8}><ProductCard product={{name:"add More", description:"Click here to add more",seller:"You", stars:4}} /></Grid> */}
