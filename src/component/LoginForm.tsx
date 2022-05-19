@@ -7,8 +7,8 @@ const Basic = () => {
   
     return (
 
-      <div>
-        <h1>Login</h1>
+      <div className="width-full max-w-xs bg-white shadow-md mx-auto p-4 rounded-xl">
+        <h1 className="text-3xl text-center">Login</h1>
         <Formik
           initialValues={{
             email: '',
@@ -29,22 +29,22 @@ const Basic = () => {
             })
           }}
         >
-          <Form>
-            <label htmlFor="email">Email</label>
-            <Field
+          <Form className="rounded flex flex-col">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+            <Field className="shadow w-full px-2 py-3 mb-3"
               id="email"
               name="email"
               placeholder="jane@acme.com"
               type="email"
             /><br />
-            <label htmlFor="password">Password</label>
-            <Field
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+            <Field className="shadow w-full px-2 py-3 mb-3"
               id="password"
               name="password"
               placeholder="jane@acme.com"
               type="password"
             /><br />
-            <button type="submit">Submit</button>
+            <button className="bg-blue-400 rounded-xl py-2 px-3 text-white" type="submit">Submit</button>
           </Form>
         </Formik>
       </div>
