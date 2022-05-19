@@ -3,11 +3,11 @@ export const BASE_URL:string = "http://localhost:8000/ecommerce/"
 
 
 export interface ProductSchema {
-    description:string;
-    name:string;
-    seller:string;
-    stars:number;
     id:number;
+    name:string;
+    description:string;
+    stock:number;
+    price:number;
 }
 
 

@@ -58,15 +58,18 @@ export const getProducts =  async ():Promise<AxiosResponse<any, any>> => {
 }
 
 
+export const putAuthData = async (putURL:string, data:Object):Promise<AxiosResponse<any,any>> => {
+    return await getAxiosInstance().put(putURL, data)
+}
 
 
 export const postAuthData = async (postURL:string, data:Object):Promise<AxiosResponse<any,any>> => {
-    return await axios.post(postURL, data)
+    return await getAxiosInstance().post(postURL, data)
 }
 
 
 export const postData = async (postURL:string, data:Object):Promise<AxiosResponse<any,any>> => {
-    return await getAxiosInstance().post(postURL, data)
+    return await axios.post(postURL, data)
 }
 
 

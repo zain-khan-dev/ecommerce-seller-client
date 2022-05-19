@@ -6,16 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link} from "react-router-dom"
-
-interface ProductSchema {
-    description:string;
-    name:string;
-    seller:string;
-    stars:number;
-    id:number
-}
-
-
+import {ProductSchema} from "../utils/Constants"
 
 
 interface Prop {

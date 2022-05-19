@@ -17,7 +17,7 @@ export const counterSlice = createSlice({
   reducers: {
     setProduct: (state, action: PayloadAction<ProductSchema[]>) => {
         console.log("setting product", action.payload)
-        state.productList = action.payload
+        state.productList   = action.payload
     },
   },
 })

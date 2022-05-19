@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { postData } from "../utils/utilityFunc"
+import { postAuthData } from "../utils/utilityFunc"
 
 const CreateProduct = () => {
     
@@ -17,7 +17,7 @@ const CreateProduct = () => {
         var regexp = /^\d+\.\d{0,2}$/; // regex to match decimal
         if(regexp.test(price)){
             const localPrice = parseFloat(price)
-            postData("product/", {name:title, description:description,stock:stock,price:price})
+            postAuthData("product/", {name:title, description:description,stock:stock,price:price})
             .then((result)=>console.log(result))
             .catch((e)=>console.log(e))
         }

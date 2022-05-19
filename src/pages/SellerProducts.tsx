@@ -14,7 +14,6 @@ const SellerProducts = () => {
 
 
     let products = useSelector((state: RootState) => state.products.productList)
-    console.log(products)
     const dispatch = useDispatch()
 
     const [productView, setProductView] = useState(products)
@@ -42,8 +41,6 @@ const SellerProducts = () => {
         }
 
     }, [])
-
-
 
     const deleteProduct = (id:number) => {
 
