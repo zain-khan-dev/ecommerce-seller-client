@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from "react-router-dom"
 import {ProductSchema} from "../utils/Constants"
-
+import beigeHat from "../beigehat.webp"
 
 interface Prop {
     product:ProductSchema;
@@ -21,16 +21,15 @@ const ProductCard:React.FC<Prop> = (prop:Prop) => {
     }
 
     return (
-        <div>
-            <span>
-            {prop.product.name}
-            </span>
-            <span >
+        <div className="bg-white p-5 rounded-xl shadow-xl flex flex-col w-[300px]" >
+            <img className=" p-1 rounded-xl max-w-xs h-auto" src={beigeHat} />
+            <h1 className="text-xl font-bold">{prop.product.name}</h1>
+            <div className="mt-4 text-md ">
                 {prop.product.description}
-            </span>
-            <div>
-                <div ><Link to="/productEdit/1" >Edit</Link></div>
-                <button onClick={handleDelete}>Delete</button>
+            </div>
+            <div className="flex flex-row justify-between mt-4">
+                <div className="bg-yellow-500 px-4 py-1 rounded text-black" ><Link to="/productEdit/1" >Edit</Link></div>
+                <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-1 rounded" >Delete</button>
             </div>
         </div>
     );
