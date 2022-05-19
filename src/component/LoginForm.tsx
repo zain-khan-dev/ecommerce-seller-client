@@ -7,7 +7,7 @@ const Basic = () => {
   
     return (
 
-      <div className="width-full max-w-xs bg-white shadow-md mx-auto p-4 rounded-xl">
+      <div className="width-full max-w-xs bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
         <h1 className="text-3xl text-center">Login</h1>
         <Formik
           initialValues={{

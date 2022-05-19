@@ -21,18 +21,14 @@ const ProductCard:React.FC<Prop> = (prop:Prop) => {
     }
 
     return (
-        <div >
-            <div
-            />
-            <div >
-                <span  >
-                {prop.product.name}
-                </span>
-                <span >
-                    {prop.product.description}
-                </span>
-            </div>
-            <div >
+        <div>
+            <span>
+            {prop.product.name}
+            </span>
+            <span >
+                {prop.product.description}
+            </span>
+            <div>
                 <div ><Link to="/productEdit/1" >Edit</Link></div>
                 <button onClick={handleDelete}>Delete</button>
             </div>
