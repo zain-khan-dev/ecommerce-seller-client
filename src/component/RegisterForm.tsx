@@ -1,9 +1,6 @@
-import React from 'react';
-import * as Yup from 'yup';
+
 import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik';
 import {postData} from "../utils/utilityFunc"
-import { Label } from '@mui/icons-material';
-import { FormLabel } from '@mui/material';
 
 // Shape of form values
 interface FormValues {
@@ -33,27 +30,27 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
     <Form>
       <h1>{message}</h1>
 
-      <FormLabel>Enter Name: </FormLabel>
+      <label>Enter Name: </label>
       <Field type="text" name="name" />
       {touched.name && errors.name && <div>{errors.name}</div>}<br />
 
 
 
-      <FormLabel>Enter Email:</FormLabel>
+      <label>Enter Email:</label>
       <Field type="email" name="email" />
       {touched.email && errors.email && <div>{errors.email}</div>}<br />
 
-      <FormLabel>Enter Password:</FormLabel>
+      <label>Enter Password:</label>
       <Field type="password" name="password" />
       {touched.password && errors.password && <div>{errors.password}</div>}<br />
 
 
-      <FormLabel>Enter Address:</FormLabel>
+      <label>Enter Address:</label>
       <Field type="text" name="address" />
       {touched.address && errors.address && <div>{errors.address}</div>}<br />
 
 
-      <FormLabel>Enter Phone Number:</FormLabel>
+      <label>Enter Phone Number:</label>
       <Field type="text" name="phone_number" />
       {touched.phone_number && errors.phone_number && <div>{errors.phone_number}</div>}<br />
 

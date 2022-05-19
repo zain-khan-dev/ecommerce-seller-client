@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAuthData } from "../utils/utilityFunc"
 import ProductCard from "../component/ProductCard"
-import Grid from '@mui/material/Grid';
 import {ProductSchema} from "../utils/Constants"
 import {deleteData} from "../utils/utilityFunc"
 import { useSelector, useDispatch } from "react-redux";
@@ -69,14 +68,14 @@ const SellerProducts = () => {
     }
     else{
         return(
-            <Grid container sx={{m:2}} spacing={4}>
+            <div >
                 {productView.map((product => {
                     return (
-                        <Grid item md={2} xs={8}><ProductCard product={product} deleteFunc={deleteProduct} /></Grid>
+                        <div ><ProductCard product={product} deleteFunc={deleteProduct} /></div>
                     )
                 }))}
                 {/* <Grid item md={2} xs={8}><ProductCard product={{name:"add More", description:"Click here to add more",seller:"You", stars:4}} /></Grid> */}
-            </Grid>
+            </div>
         )
     }
 

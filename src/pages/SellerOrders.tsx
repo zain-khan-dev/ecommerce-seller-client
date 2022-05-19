@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material"
 import { useEffect,useState } from "react"
 import {getAuthData} from "../utils/utilityFunc"
 import {OrderSchema, orderStatus} from "../utils/Constants"
@@ -24,11 +23,11 @@ const SellerOrders = () => {
 
 
     return(
-        <Box display="flex" flexDirection="column">
+        <div >
             <div>
                 <Orders orderList={allOrders} />
             </div>
-        </Box>
+        </div>
 
     )
 }

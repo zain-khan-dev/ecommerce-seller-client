@@ -1,22 +1,20 @@
-import Box from "@mui/material/Box"
-import { Typography } from "@mui/material"
 import {Link} from "react-router-dom"
 
 const Navbar = () => {
     return(
         <div >
-            <Box display="flex" sx={{justifyContent:"space-between", mx:"auto"}} width={{md:"60%"}} >
-                <Link to=""><Typography>Home</Typography></Link>
-                <Link to=""><Typography>About</Typography></Link>
-                <Link to=""><Typography >Success Stories</Typography></Link>
-                <Link to="/products"><Typography>My Products</Typography></Link>
-                <Link to=""><Typography>Stats</Typography></Link>
-                <Link to=""><Typography>Pending Orders</Typography></Link>
-                <Typography>SingleProductStat</Typography>
-                <Typography>Profile</Typography>
-                <Typography>Signout</Typography>
-                <Typography >Signup</Typography>
-            </Box>
+            <div >
+                <Link to=""><span>Home</span></Link>
+                <Link to=""><span>About</span></Link>
+                <Link to=""><span >Success Stories</span></Link>
+                <Link to="/products"><span>My Products</span></Link>
+                <Link to=""><span>Stats</span></Link>
+                <Link to=""><span>Pending Orders</span></Link>
+                <span>SingleProductStat</span>
+                <span>Profile</span>
+                <span>Signout</span>
+                <span >Signup</span>
+            </div>
         </div>
     )
 }

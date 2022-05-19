@@ -1,7 +1,6 @@
 import {OrderSchema, orderStatus} from "../utils/Constants"
 import {FC, useEffect, useState} from "react"
 import IndividualOrder from "./IndividualOrder"
-import { Typography } from "@mui/material";
 
 interface Props { 
     orderList: OrderSchema[];
@@ -33,7 +32,7 @@ const Orders:FC<Props> = ({orderList}) => {
                 <select value={filter} onChange={(handleFilterChange)}>
                     {orderStatus.map((status)=><option value={status.key}>{status.value}</option>)}
                 </select>
-            <Typography>{orderStatus.filter((status)=>status.key==filter)[0].value}</Typography>
+            <span>{orderStatus.filter((status)=>status.key==filter)[0].value}</span>
             </div>
             <div>
                 {orders.map((order)=><IndividualOrder order={order} />)}

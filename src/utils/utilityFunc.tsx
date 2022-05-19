@@ -1,8 +1,5 @@
 import axios, { AxiosResponse, AxiosPromise, AxiosInstance, AxiosRequestHeaders } from "axios"
-import { useDispatch } from "react-redux"
-import { setProduct } from "../reducer/ProductSlice"
 import {BASE_URL} from "./Constants"
-import { ProductSchema } from "./Constants"
 
 export const getAxiosInstance = ():AxiosInstance    => {
 
