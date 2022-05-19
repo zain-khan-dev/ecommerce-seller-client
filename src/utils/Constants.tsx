@@ -29,3 +29,15 @@ export const orderStatus = [
     {key:"CMP", value:"Order Completed"},
     {key:"UNF", value:"Unfulfilled"}
 ]
+
+
+export interface UserRegisterDetails {
+    user:{username:string, password:string}
+    address:string;
+    name:string
+    phone_number:string
+}
+
+export interface UserLoginDetails {
+    username:string, password:string
+}

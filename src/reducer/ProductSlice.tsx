@@ -11,7 +11,7 @@ const initialState:ProductSliceSchema = {
     productList: []
 }
 
-export const counterSlice = createSlice({
+export const ProductSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
@@ -23,6 +23,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setProduct } = counterSlice.actions
+export const { setProduct } = ProductSlice.actions
 
-export default counterSlice.reducer
+export default ProductSlice.reducer

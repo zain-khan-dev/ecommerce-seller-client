@@ -1,6 +1,7 @@
 
 import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik';
 import {postData} from "../utils/utilityFunc"
+import {UserRegisterDetails} from "../utils/Constants"
 
 // Shape of form values
 interface FormValues {
@@ -16,12 +17,6 @@ interface OtherProps {
 }
 
 
-interface SellerDetail {
-    user:{username:string, password:string}
-    address:string;
-    name:string
-    phone_number:string
-}
 
 // Aside: You may see InjectedFormikProps<OtherProps, FormValues> instead of what comes below in older code.. InjectedFormikProps was artifact of when Formik only exported a HoC. It is also less flexible as it MUST wrap all props (it passes them through).
 const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
@@ -96,7 +91,7 @@ const MyForm = withFormik<MyFormProps, FormValues>({
 
 
   handleSubmit: values => {
-      const sellerDetail:SellerDetail = {user:{username:values.email, password:values.password}, address:values.address, name:values.name,phone_number:values.phone_number}
+      const sellerDetail:UserRegisterDetails = {user:{username:values.email, password:values.password}, address:values.address, name:values.name,phone_number:values.phone_number}
       console.log(sellerDetail)
       postData("http://localhost:8000/ecommerce/seller/", sellerDetail)
       .then((result) => {

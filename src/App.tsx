@@ -1,12 +1,12 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import About from "./pages/About"
-import Navbar from "./component/Navbar";;
+import Navbar from "./component/Navbar";
 import SellerProducts from "./pages/SellerProducts";
 import LoginForm from "./component/LoginForm"
 import CreateProduct from "./component/CreateProduct";
 import SellerOrders from "./pages/SellerOrders";
 import ProductEdit from "./pages/ProductEdit";
-
+import Home from "./pages/Home"
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/createProduct" element={<CreateProduct />} />
           <Route path="/orders" element={<SellerOrders />} />
           <Route path="/productEdit/:id" element={<ProductEdit />} />
+          <Route path="/" element={<Home />} />
         </Routes>
     </Router>
   );
