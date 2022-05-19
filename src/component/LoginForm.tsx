@@ -31,20 +31,21 @@ const Basic = () => {
         >
           <Form className="rounded flex flex-col">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-            <Field className="shadow w-full px-2 py-3 mb-3"
+            <Field className="shadow bg-gray-100 w-full px-2 py-3 mb-3 rounded-xl"
               id="email"
               name="email"
               placeholder="jane@acme.com"
               type="email"
             /><br />
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
-            <Field className="shadow w-full px-2 py-3 mb-3"
+            <Field className="shadow w-full px-2 py-3 mb-3 rounded-xl bg-gray-100"
               id="password"
               name="password"
               placeholder="jane@acme.com"
               type="password"
             /><br />
             <button className="bg-blue-400 rounded-xl py-2 px-3 text-white" type="submit">Submit</button>
+            <div className="block text-center mt-2 underline text-blue-800 text-sm">Forget Password</div>
           </Form>
         </Formik>
       </div>

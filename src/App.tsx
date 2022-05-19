@@ -7,6 +7,8 @@ import CreateProduct from "./component/CreateProduct";
 import SellerOrders from "./pages/SellerOrders";
 import ProductEdit from "./pages/ProductEdit";
 import Home from "./pages/Home"
+import RegisterForm from "./component/RegisterForm";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<SellerProducts />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
           <Route path="/createProduct" element={<CreateProduct />} />
           <Route path="/orders" element={<SellerOrders />} />
           <Route path="/productEdit/:id" element={<ProductEdit />} />
