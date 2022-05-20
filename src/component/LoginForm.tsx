@@ -4,6 +4,7 @@ import {postData} from "../utils/utilityFunc"
 import { useDispatch } from 'react-redux';
 import { setLoggedState } from '../reducer/LoginSlice';
 import { useNavigate } from 'react-router-dom';
+import MyModal from './Modal';
 
 const Basic = () => {
 
@@ -34,6 +35,7 @@ const Basic = () => {
             })
             .catch((e) => {
                 console.log(e)
+                alert("There was a problem logging in ")
             })
           }}
         >

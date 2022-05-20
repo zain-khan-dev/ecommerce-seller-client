@@ -1,57 +1,66 @@
+import { Formik, Field, Form } from "formik"
 import {useState} from "react"
+import { string } from "yup"
 import { postAuthData } from "../utils/utilityFunc"
 
+
 const CreateProduct = () => {
-    
-    
-    const [title, setTitle] = useState("")
-
-    const [description, setDescription] = useState("")
-
-    const [stock, setStock] = useState(0)
-
-    const [price, setPrice] = useState("")
-
-    const handleCreateNewProduct = (e:any) => {
-        e.preventDefault()
-        var regexp = /^\d+\.\d{0,2}$/; // regex to match decimal
-        if(regexp.test(price)){
-            const localPrice = parseFloat(price)
-            postAuthData("product/", {name:title, description:description,stock:stock,price:price})
-            .then((result)=>console.log(result))
-            .catch((e)=>console.log(e))
-        }
-        else{
-            alert("Enter a valid price")
-        }
-    }
-
-
-
-    const handlePriceChange = (e:any) => {
-
-        // e.preventDefault()
-        var regexp = /^\d+\.\d{0,2}$/;
-        console.log(e.target.value)
-        setPrice(e.target.value)
-            
-        // returns true
-
-    }
 
     return(
-        <div>
-            <form>
-                <label>Title: </label>
-                <input type="text" value={title} onChange={(e)=>setTitle(e.target.value)} /><br />
-                <label>Description: </label>
-                <input type="text" value={description} onChange ={(e)=>setDescription(e.target.value)} /><br />
-                <label>Stock: </label>
-                <input type="number" value={stock} onChange={(e)=>setStock(parseInt(e.target.value))} /><br />
-                <label>Price: </label>
-                <input type="string" value={price} onChange={handlePriceChange} /><br />
-                <button type="submit" onClick={handleCreateNewProduct}>Create</button>
-            </form>
+        <div className="width-full max-w-sm bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
+        <Formik
+            initialValues={{
+                name:'',
+                description:'',
+                price: '',
+                stock: ''
+            }}
+            onSubmit={(values)=>{
+                var regexp = /^\d+\.\d{0,2}$/; // regex to match decimal
+                if(regexp.test(values.price)){
+                    const localPrice = parseFloat(values.price)
+                    postAuthData("product/", {name:values.name, description:values.description,stock:values.stock,price:values.price})
+                    .then((result)=>console.log(result))
+                    .catch((e)=>alert("Difficult" + e))
+                }
+                else{
+                    alert("Enter correct price")
+                }
+            }}
+            >   
+                <Form className="flex flex-col rounded text-center ">
+                    <label className="mt-4 text-xl font-medium">Name</label>
+                    <Field 
+                        className=" shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                        name="name"
+                        id="name"
+                        placeholder="Enter the product name"
+                    />
+                    <label className="mt-4 text-xl font-medium">Description</label>
+                    <textarea 
+                        className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                        name="description"
+                        id="description"
+                        placeholder="Provide description for your product"
+                    />
+                    <label className="mt-4 text-xl font-medium font-sans">Price</label>
+                    <Field 
+                        className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                        name="price"
+                        id="price"
+                        
+                        placeholder="Enter the product price"
+                    />
+                    <label className="mt-4 text-xl font-medium">Stock</label> 
+                    <Field 
+                        className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                        name="stock"
+                        id="stock"
+                        placeholder="Enter the product stock"
+                    /> 
+                    <button className="mt-4 bg-green-600 px-3 py-2 rounded-xl" type="submit">Create</button>
+                </Form>
+            </Formik>
         </div>
     )
 }

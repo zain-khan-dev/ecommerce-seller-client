@@ -8,7 +8,7 @@ import SellerOrders from "./pages/SellerOrders";
 import ProductEdit from "./pages/ProductEdit";
 import Home from "./pages/Home"
 import RegisterForm from "./component/RegisterForm";
-
+import Dashboard from "./pages/Dashboard"
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
             <Route path="/createProduct" element={<CreateProduct />} />
             <Route path="/orders" element={<SellerOrders />} />
             <Route path="/productEdit/:id" element={<ProductEdit />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<Home />} />
           </Routes>
       </Router>

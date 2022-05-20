@@ -23,10 +23,8 @@ const SellerOrders = () => {
 
 
     return(
-        <div >
-            <div>
-                <Orders orderList={allOrders} />
-            </div>
+        <div>
+            <Orders orderList={allOrders} />
         </div>
 
     )
