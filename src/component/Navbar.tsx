@@ -21,7 +21,7 @@ const Navbar = () => {
     // get the login navbar 
     if(isLogged){
         return(
-            <div className="hidden md:flex flex-row w-3/4 mx-auto justify-evenly text-xl  text-black font-medium mb-4">
+            <div className="mt-4 hidden md:flex flex-row w-3/4 mx-auto justify-evenly text-xl  text-black font-medium mb-4">
                 <Link to="/dashboard"><span>Dashboard</span></Link>
                 <Link to="/products"><span>My Products</span></Link>
                 <Link to="/stats"><span>Products Stats</span></Link>
@@ -34,13 +34,11 @@ const Navbar = () => {
     }
     else{
         return(
-            <div >
-                <div className="hidden md:flex flex-row w-3/4 mx-auto justify-evenly text-xl  text-black font-medium underline mb-4">
-                    <Link to="/home"><span>Home</span></Link>
-                    <Link to="/about"><span>About</span></Link>
-                    <Link to="/success-stories"><span >Success Stories</span></Link>
-                    <DropDown />
-                </div>
+            <div className="mt-4 hidden md:flex flex-row w-3/4 mx-auto justify-evenly text-xl  text-black font-medium  mb-4">
+                <Link to="/home"><span>Home</span></Link>
+                <Link to="/about"><span>About</span></Link>
+                <Link to="/success-stories"><span >Success Stories</span></Link>
+                <DropDown items={[{"name":"login","link":"/login"}, {"name":"Register", "link":"/register"}]}/>
             </div>
         )
 

@@ -17,6 +17,7 @@ const CreateProduct = () => {
             }}
             onSubmit={(values)=>{
                 var regexp = /^\d+\.\d{0,2}$/; // regex to match decimal
+                console.log(values.price)
                 if(regexp.test(values.price)){
                     const localPrice = parseFloat(values.price)
                     postAuthData("product/", {name:values.name, description:values.description,stock:values.stock,price:values.price})
@@ -37,10 +38,11 @@ const CreateProduct = () => {
                         placeholder="Enter the product name"
                     />
                     <label className="mt-4 text-xl font-medium">Description</label>
-                    <textarea 
+                    <Field  as="textarea"
                         className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
                         name="description"
                         id="description"
+                        
                         placeholder="Provide description for your product"
                     />
                     <label className="mt-4 text-xl font-medium font-sans">Price</label>

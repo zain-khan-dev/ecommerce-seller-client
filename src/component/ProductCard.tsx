@@ -21,7 +21,7 @@ const ProductCard:React.FC<Prop> = (prop:Prop) => {
     }
 
     return (
-        <div className="bg-white p-5 rounded-xl shadow-xl flex flex-col w-[220px] mt-4 md:mt-0" >
+        <div className="bg-white p-5 rounded-xl shadow-xl flex flex-col w-[220px] md:mt-0" >
             <img width={"170px"} height={"100px"} className="mx-auto p-1 rounded-xl max-w-xs h-auto" src={beigeHat} />
             <h1 className="text-xl font-bold mt-4">{prop.product.name}</h1>
             <div className="mt-4 text-md ">

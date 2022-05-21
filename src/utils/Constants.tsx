@@ -21,13 +21,13 @@ export interface OrderSchema {
 }
 
 export const orderStatus = [
-    {key:"PE", value:"Order Pending"},
-    {key:"PL", value:"Order Placed"},
-    {key:"OFD", value:"Out For Delivery"},
-    {key:"PKD", value:"Order Packed"},
-    {key:"SHP", value:"Order Shipping"},
-    {key:"CMP", value:"Order Completed"},
-    {key:"UNF", value:"Unfulfilled"}
+    {key:"PE", name:"Order Pending"},
+    {key:"PL", name:"Order Placed"},
+    {key:"OFD", name:"Out For Delivery"},
+    {key:"PKD", name:"Order Packed"},
+    {key:"SHP", name:"Order Shipping"},
+    {key:"CMP", name:"Order Completed"},
+    {key:"UNF", name:"Unfulfilled"}
 ]
 
 

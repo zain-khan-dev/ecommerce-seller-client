@@ -76,7 +76,7 @@ const SellerProducts = () => {
         }
         else{
             return(
-                <div className="grid md:grid-cols-5 grid-cols-1 content-center text-center" >
+                <div className="grid md:grid-cols-5 grid-cols-1 content-center text-center mt-4" >
                     {productView.map((product => {
                         return (
                             <ProductCard product={product} deleteFunc={deleteProduct} />
