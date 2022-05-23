@@ -41,3 +41,5 @@ export interface UserRegisterDetails {
 export interface UserLoginDetails {
     username:string, password:string
 }
+
+export const TOTAL_PHOTOS_ALLOWED = 7

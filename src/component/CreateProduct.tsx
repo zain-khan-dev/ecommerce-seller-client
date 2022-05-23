@@ -2,11 +2,43 @@ import { Formik, Field, Form } from "formik"
 import {useState} from "react"
 import { string } from "yup"
 import { postAuthData } from "../utils/utilityFunc"
+import { TOTAL_PHOTOS_ALLOWED } from "../utils/Constants"
 
 
 const CreateProduct = () => {
 
+
+    const [uploadedImages, setUploadedImages] = useState<string[]>([])
+
+
+    const handleFileUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+        const files = e.target.files
+        if(files && files.length > 0){
+            const filteredImages = [...uploadedImages]
+
+            filteredImages.push(URL.createObjectURL(files[0]))
+            setUploadedImages(filteredImages)
+        }
+        // upload image here
+    }
+
+
+    // const useEffect(()=>{
+
+    //     ()=>{
+
+    //     }
+
+
+    // }, [])
+
+
     return(
+
+
+
+
         <div className="width-full max-w-sm bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
         <Formik
             initialValues={{
@@ -98,6 +130,13 @@ const CreateProduct = () => {
                         <option value='Video'>Video Games</option>
 
                     </Field>
+                    <div className="mt-4 flex flex-col items-center tex-center justify-center">
+                        {[...Array(TOTAL_PHOTOS_ALLOWED)].map((val, idx)=>
+                        <input  onChange={handleFileUpload} type="file" className={"text-center justify-center items-center " + (idx!=uploadedImages.length?"hidden":"block")} />)}
+                    </div>
+                    <div className="flex flex-row my-4">
+                        {uploadedImages.map((file:string)=><img width={"50px"} height={"50px"} src={file} />)}
+                    </div>
                     <button className="mt-4 bg-green-600 px-3 py-2 rounded-xl" type="submit">Create</button>
                 </Form>
             </Formik>
