@@ -8,7 +8,7 @@ import { TOTAL_PHOTOS_ALLOWED } from "../utils/Constants"
 const CreateProduct = () => {
 
 
-    const [uploadedImages, setUploadedImages] = useState<string[]>([])
+    const [uploadedImages, setUploadedImages] = useState<File[]>([])
 
 
     const handleFileUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +17,7 @@ const CreateProduct = () => {
         if(files && files.length > 0){
             const filteredImages = [...uploadedImages]
 
-            filteredImages.push(URL.createObjectURL(files[0]))
+            filteredImages.push(files[0])
             setUploadedImages(filteredImages)
         }
         // upload image here
@@ -39,14 +39,15 @@ const CreateProduct = () => {
 
 
 
-        <div className="width-full max-w-sm bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
+        <div className="width-full md:max-w-lg max-w-sm bg-white shadow-md mx-auto p-4 rounded-xl md:mt-10 mt-2">
         <Formik
             initialValues={{
                 name:'',
                 description:'',
                 price: '',
                 stock: '',
-                category:''
+                category:'',
+                discount: '',
             }}
             onSubmit={(values)=>{
                 var regexp = /^\d+\.\d{0,2}$/; // regex to match decimal
@@ -54,7 +55,16 @@ const CreateProduct = () => {
                 console.log(values.category)
                 if(regexp.test(values.price)){
                     const localPrice = parseFloat(values.price)
-                    postAuthData("product/", {name:values.name, description:values.description,stock:values.stock,price:values.price, category:values.category})
+                    postAuthData("product/", 
+                    {
+                        name:values.name, 
+                        description:values.description,
+                        stock:values.stock,
+                        price:values.price, 
+                        category:values.category, 
+                        images:uploadedImages,
+                        discount:values.discount
+                    })
                     .then((result)=>console.log(result))
                     .catch((e)=>alert("Difficult" + e))
                 }
@@ -64,6 +74,7 @@ const CreateProduct = () => {
             }}
             >   
                 <Form className="flex flex-col rounded text-center ">
+                    <h1 className="md:text-3xl text-xl font-semibold mb-2">Create Product</h1>
                     <label className="mt-4 text-xl font-medium">Name</label>
                     <Field 
                         className=" shadow-xl rounded-xl bg-white w-full px-3 py-2"
@@ -87,6 +98,17 @@ const CreateProduct = () => {
                         
                         placeholder="Enter the product price"
                     />
+                    <label className="mt-4 text-xl font-medium font-sans">Discount</label>
+                    <Field 
+                        className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                        name="discount"
+                        id="discount"  
+                        type="number"
+                        max={99}
+                        min={0}
+                        placeholder="Enter the discount (default 0)"
+                    />
+                    <div>The effective product price will be {}</div>
                     <label className="mt-4 text-xl font-medium">Stock</label> 
                     <Field 
                         className="shadow-xl rounded-xl bg-white w-full px-3 py-2"
@@ -135,9 +157,9 @@ const CreateProduct = () => {
                         <input  onChange={handleFileUpload} type="file" className={"text-center justify-center items-center " + (idx!=uploadedImages.length?"hidden":"block")} />)}
                     </div>
                     <div className="flex flex-row my-4">
-                        {uploadedImages.map((file:string)=><img width={"50px"} height={"50px"} src={file} />)}
+                        {uploadedImages.map((file:File)=><img width={"50px"} height={"50px"} src={URL.createObjectURL(file)} />)}
                     </div>
-                    <button className="mt-4 bg-green-600 px-3 py-2 rounded-xl" type="submit">Create</button>
+                    <button className="mt-4 bg-green-600 px-3 py-2 rounded-xl text-white text-xl" type="submit">Create</button>
                 </Form>
             </Formik>
         </div>
