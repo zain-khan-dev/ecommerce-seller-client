@@ -11,6 +11,7 @@ const CreateProduct = () => {
 
 
     const [uploadedImages, setUploadedImages] = useState<File[]>([])
+    const [productFeatures, setProductFeatures] = useState<string[]>([])
 
 
     return(
@@ -46,6 +47,7 @@ const CreateProduct = () => {
                         price:values.price, 
                         category:values.category, 
                         images:uploadedImages,
+                        features:productFeatures,
                         discount:values.discount,
                         width:values.width,
                         height:values.height,
@@ -67,7 +69,7 @@ const CreateProduct = () => {
                         <div className="flex md:flex-row flex-col">
                             <CreateProductPart1  uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} />
                             <div className="divide-y hidden md:block border-2 border-yellow-600"></div>
-                            <CreateProductPart2 />
+                            <CreateProductPart2 productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
                         <div>
                         </div>
                     </div>

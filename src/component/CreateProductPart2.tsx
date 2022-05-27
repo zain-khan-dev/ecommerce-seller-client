@@ -1,6 +1,13 @@
 import {Field} from "formik"
+import ProductFeature from "./ProductFeature"
 
-const CreateProductPart2 = () => {
+
+interface Props {
+    productFeatures: string[]
+    setProductFeatures: React.Dispatch<React.SetStateAction<string[]>>
+}
+
+const CreateProductPart2:React.FC<Props> = ({productFeatures, setProductFeatures}) => {
 
     // console.log()
 
@@ -11,22 +18,24 @@ const CreateProductPart2 = () => {
     return (
         <div className="flex-1 mx-2">
             <h1 className="text-2xl font-bold my-4">Step 2</h1>
+            <label className="text-xl font-mediym font-sans">Dimension </label>
             <div className="flex flex-row justify-center items-center my-4">
-                <label className="md:text-lg">Dimension: </label>
                 <Field 
-                    className="md:mx-2 shadow-xl rounded-xl bg-white w-[100px] px-3 py-2"
+                    className="md:mx-2 shadow-xl rounded-xl bg-white w-full  px-3 py-2"
                     name="width"
                     id="width"
                     type="number"
                     placeholder="width"
+                    min={1}
                 />
                 X
                 <Field 
-                    className="shadow-xl rounded-xl bg-white w-[100px] px-3 py-2 md:mx-2"
+                    className="shadow-xl rounded-xl bg-white w-full px-3 py-2 md:mx-2"
                     name="height"
                     id="height"
                     type="number"
                     placeholder="height"
+                    min={1}
                 />
                 <Field as="select" className="ml-2 bg-white" name="metric" id="metric">
                     <option value="mm">millimeter</option>
@@ -57,6 +66,7 @@ const CreateProductPart2 = () => {
                 id="manufacturer_name"
                 placeholder="Enter Manufacturer Name"
             />
+            <ProductFeature productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
         </div>
     )
 
