@@ -1,14 +1,16 @@
 import {Field} from "formik"
 import {TOTAL_PHOTOS_ALLOWED} from "../utils/Constants"
-
+import ProductFeature from "./ProductFeature"
 
 interface Props {
-    uploadedImages: File[]
-    setUploadedImages: React.Dispatch<React.SetStateAction<File[]>>
+    uploadedImages: File[];
+    setUploadedImages: React.Dispatch<React.SetStateAction<File[]>>;
+    productFeatures: string[];
+    setProductFeatures: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 
-const CreateProductPart1:React.FC<Props> = ({uploadedImages, setUploadedImages}) => {
+const CreateProductPart1:React.FC<Props> = ({uploadedImages, setUploadedImages, productFeatures, setProductFeatures}) => {
     
 
     const handleFileUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -103,6 +105,7 @@ const CreateProductPart1:React.FC<Props> = ({uploadedImages, setUploadedImages})
                 <option value='Toys '>Toys & Games</option>
                 <option value='Video'>Video Games</option>
             </Field>
+
             <div className="mt-4 flex flex-col items-center tex-center justify-center">
                 {[...Array(TOTAL_PHOTOS_ALLOWED)].map((val, idx)=>
                 <input  onChange={handleFileUpload} type="file" className={"text-center justify-center items-center " + (idx!=uploadedImages.length?"hidden":"block")} />)}
@@ -110,6 +113,7 @@ const CreateProductPart1:React.FC<Props> = ({uploadedImages, setUploadedImages})
             <div className="flex flex-row my-4">
                 {uploadedImages.map((file:File)=><img width={"50px"} height={"50px"} src={URL.createObjectURL(file)} />)}
             </div>
+            <ProductFeature productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
         </div>
     )
 

@@ -1,13 +1,10 @@
 import {Field} from "formik"
 import ProductFeature from "./ProductFeature"
+import countries from "../asset/country_list.json"
 
 
-interface Props {
-    productFeatures: string[]
-    setProductFeatures: React.Dispatch<React.SetStateAction<string[]>>
-}
 
-const CreateProductPart2:React.FC<Props> = ({productFeatures, setProductFeatures}) => {
+const CreateProductPart2 = () => {
 
     // console.log()
 
@@ -66,7 +63,24 @@ const CreateProductPart2:React.FC<Props> = ({productFeatures, setProductFeatures
                 id="manufacturer_name"
                 placeholder="Enter Manufacturer Name"
             />
-            <ProductFeature productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
+            <label className="text-xl font-medium font-sans">Expiry Date (If any)</label>
+            <Field 
+                className="my-4  shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                name="expiry_date"
+                id="expiry_date"
+                type="date"
+                placeholder="Enter Expiry Date"
+            />
+            <label className="text-xl font-medium font-sans">Country of Origin</label>
+            <Field 
+                as="select"
+                className="my-4  shadow-xl rounded-xl bg-white w-full px-3 py-2"
+                name="country_of_origin"
+                id="country_of_origin"
+                placeholder="Enter country of origin"
+            >
+                {countries.map((country)=><option key={country.value}>{country.label}</option>)}
+            </Field>
         </div>
     )
 

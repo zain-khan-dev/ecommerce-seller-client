@@ -24,13 +24,15 @@ const CreateProduct = () => {
                 price: '',
                 stock: '',
                 category:'',
-                discount: '',
+                discount: 0,
                 width: '',
                 height: '',
-                metric: '',
+                metric: 'mm',
                 model: '',
                 release_date: '',
-                manufacturer_name: ''
+                manufacturer_name: '',
+                country_of_origin: 'AF',
+                expiry_date: ''
             }}
             onSubmit={(values)=>{
                 console.log(values)
@@ -54,7 +56,9 @@ const CreateProduct = () => {
                         metric:values.metric,
                         model:values.model,
                         release_date:values.release_date,
-                        manufacturer_name: values.manufacturer_name
+                        manufacturer_name: values.manufacturer_name,
+                        country_of_origin:values.country_of_origin,
+                        expiry_date:values.expiry_date
                     })
                     .then((result)=>console.log(result))
                     .catch((e)=>alert("Difficult" + e))
@@ -67,9 +71,9 @@ const CreateProduct = () => {
                 <Form className="flex flex-col rounded text-center">
                     <h1 className="md:text-3xl text-3xl font-semibold mb-2">Create Product</h1>
                         <div className="flex md:flex-row flex-col">
-                            <CreateProductPart1  uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} />
+                            <CreateProductPart1  uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
                             <div className="divide-y hidden md:block border-2 border-yellow-600"></div>
-                            <CreateProductPart2 productFeatures={productFeatures} setProductFeatures={setProductFeatures} />
+                            <CreateProductPart2  />
                         <div>
                         </div>
                     </div>
