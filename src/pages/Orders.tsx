@@ -1,13 +1,12 @@
 import {OrderSchema, orderStatus} from "../utils/Constants"
 import {FC, useEffect, useState} from "react"
-import IndividualOrder from "./IndividualOrder"
-import DropDown from "./DropDown"
+import IndividualOrder from "../component/IndividualOrder"
+import DropDown from "../component/DropDown"
+import { getAuthData } from "../utils/utilityFunc"
 
-interface Props { 
-    orderList: OrderSchema[];
-}
 
-const Orders:FC<Props> = ({orderList}) => {
+
+const Orders = () => {
 
 
     const [filter, setFilter] = useState("PE")
@@ -16,21 +15,36 @@ const Orders:FC<Props> = ({orderList}) => {
     
 
     useEffect(()=>{
-        setOrders(orderList.filter((order)=>order.status === "PE"))
-    }, [orderList])
+
+        getAuthData("/orders/"+filter)
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+
+    }, [])
+
+
+    useEffect(()=>{
+        getAuthData("/orders/"+filter)
+        .then((result)=>{
+            console.log(result)
+            setOrders(result.data)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+    }, [filter])
  
-    const handleFilterChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
 
-        setFilter(e.target.value)
-        setOrders(orderList.filter((order)=>order.status === e.target.value))
-
-    }
-
+    
     
     return (
         <div>
             <div>
-            <select className="p-2 my-4 " value={filter} onChange={(handleFilterChange)}>
+            <select className="p-2 my-4 " value={filter} onChange={(e)=>setFilter(e.target.value)}>
                 {orderStatus.map((status)=><option className="font-sans " value={status.key}>{status.name}</option>)}
             </select>
             </div>
