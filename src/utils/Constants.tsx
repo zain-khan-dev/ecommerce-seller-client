@@ -2,12 +2,20 @@ export const BASE_URL:string = "http://localhost:8000/ecommerce/"
 
 
 
+
+interface ImageSchema {
+    id:number,
+    src:string,
+    product_id:number
+}
+
 export interface ProductSchema {
     id:number;
     name:string;
     description:string;
     stock:number;
     price:number;
+    images:ImageSchema[]
 }
 
 

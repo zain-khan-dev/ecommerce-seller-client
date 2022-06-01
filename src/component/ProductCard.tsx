@@ -9,27 +9,30 @@ interface Prop {
 }
 
 
-const ProductCard:React.FC<Prop> = (prop:Prop) => {
+const ProductCard:React.FC<Prop> = ({product, deleteFunc}) => {
 
+
+    console.log(product)
 
     const handleDelete = () => {
 
-        console.log(prop.product.id)
+        console.log(product.id)
 
-        prop.deleteFunc(prop.product.id)
+        deleteFunc(product.id)
 
     }
 
     return (
-        <div className="bg-white p-5 rounded-xl shadow-xl flex flex-col w-[220px] md:mt-0" >
-            <img width={"170px"} height={"100px"} className="mx-auto p-1 rounded-xl max-w-xs h-auto" src={beigeHat} />
-            <h1 className="text-xl font-bold mt-4">{prop.product.name}</h1>
+        <div className="bg-white rounded-xl shadow-xl flex flex-col md:mx-5 md:p-2 my-4 md:text-center" >
+            {}
+            <img width={"170px"} height={"100px"} className="ml-4 md:mx-auto p-1 rounded-xl max-w-xs h-auto" src={product.images.length>0?product.images[0].src:beigeHat} />
+            <h1 className="text-xl font-bold mt-4">{product.name}</h1>
             <div className="mt-4 text-md ">
-                {prop.product.description}
+                {product.description.substring(0, 25)} ... 
             </div>
-            <div className="flex flex-row justify-between mt-4">
+            <div className="flex flex-row mt-4 ">
                 <div className="bg-yellow-500 px-4 py-1 rounded text-black" ><Link to="/productEdit/1" >Edit</Link></div>
-                <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-1 rounded" >Delete</button>
+                <button onClick={handleDelete} className="ml-8 bg-red-500 text-white px-4 py-1 rounded" >Delete</button>
             </div>
         </div>
     );
