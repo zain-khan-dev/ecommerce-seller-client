@@ -38,7 +38,7 @@ const Navbar = () => {
                 <Link to="/home"><span>Home</span></Link>
                 <Link to="/about"><span>About</span></Link>
                 <Link to="/success-stories"><span >Success Stories</span></Link>
-                <DropDown items={[{"name":"login","link":"/login"}, {"name":"Register", "link":"/register"}]}/>
+                <DropDown items={[{"name":"Login","link":"/login"}, {"name":"Register", "link":"/register"}]}/>
             </div>
         )
 

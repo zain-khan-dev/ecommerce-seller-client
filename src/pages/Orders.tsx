@@ -2,11 +2,14 @@ import {OrderSchema, ORDER_STATUS} from "../utils/Constants"
 import {FC, useEffect, useState} from "react"
 import IndividualOrder from "../component/IndividualOrder"
 import DropDown from "../component/DropDown"
-import { getAuthData } from "../utils/utilityFunc"
+import { getAuthData, useAuthenticator } from "../utils/utilityFunc"
 
 
 
 const Orders = () => {
+
+
+    const isLogged = useAuthenticator()
 
 
     const [filter, setFilter] = useState("PE")

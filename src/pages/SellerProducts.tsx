@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuthData } from "../utils/utilityFunc"
+import { getAuthData, useAuthenticator } from "../utils/utilityFunc"
 import ProductCard from "../component/ProductCard"
 import {ProductSchema} from "../utils/Constants"
 import {deleteData} from "../utils/utilityFunc"
@@ -11,6 +11,9 @@ import {setProduct} from "../reducer/ProductSlice"
 
 
 const SellerProducts = () => {
+
+
+    const isLogged = useAuthenticator()
 
 
     let products = useSelector((state: RootState) => state.products.productList)

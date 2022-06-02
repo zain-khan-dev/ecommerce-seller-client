@@ -4,12 +4,15 @@ import {RootState} from "../reducer/store"
 import { useLocation, useParams } from "react-router-dom"
 import {useState} from "react"
 import axios from "axios"
-import { putAuthData } from "../utils/utilityFunc"
+import { putAuthData, useAuthenticator } from "../utils/utilityFunc"
 import { useEffect } from "react"
 import { Formik, Form, Field } from "formik"
 import { CATEGORY_MAPPING } from "../utils/Constants"
 
 const ProductEdit = () => {
+
+
+    const isLogged = useAuthenticator()
 
     let products = useSelector((state: RootState) => state.products).productList
 

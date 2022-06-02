@@ -1,4 +1,8 @@
 import axios, { AxiosResponse, AxiosPromise, AxiosInstance, AxiosRequestHeaders } from "axios"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { RootState } from "../reducer/store"
 import {BASE_URL} from "./Constants"
 
 export const getAxiosInstance = ():AxiosInstance    => {
@@ -89,5 +93,22 @@ export const getData = async(getURL:string):Promise<AxiosResponse<any,any>> => {
 
 export const deleteData = async(deleteURL:string, id:number):Promise<AxiosResponse<any,any>> => {
     return await getAxiosInstance().delete(`${deleteURL}${id}`)
+}
+
+
+
+export const useAuthenticator = () => {
+
+    const isLogged = useSelector((state:RootState)=>state.logged.isLogged)
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!isLogged)
+        navigate("/") 
+
+    }, [isLogged])
+    
+    return isLogged
+
 }
 

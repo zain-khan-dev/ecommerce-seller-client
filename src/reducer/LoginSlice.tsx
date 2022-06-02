@@ -7,7 +7,7 @@ interface LoggedSliceSchema {
 
 
 const initialState:LoggedSliceSchema = {
-    isLogged: localStorage.getItem("access_token") != ""
+    isLogged: localStorage.getItem("access_token") != "" && localStorage.getItem("access_token") != null
 }
 
 export const loggedSlice = createSlice({
