@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuthData, useAuthenticator } from "../utils/utilityFunc"
+import { getAuthData, useAuthenticator, useProductFetch } from "../utils/utilityFunc"
 import ProductCard from "../component/ProductCard"
 import {ProductSchema} from "../utils/Constants"
 import {deleteData} from "../utils/utilityFunc"
@@ -15,37 +15,28 @@ const SellerProducts = () => {
 
     const isLogged = useAuthenticator()
 
-
-    let products = useSelector((state: RootState) => state.products.productList)
     const dispatch = useDispatch()
+
+
+    const products = useProductFetch()
 
     const [loading, setLoading] = useState<boolean>(false)
     const [productView, setProductView] = useState(products)
 
+    
 
     useEffect(()=>{
-
-        if(products.length == 0){
-            getProducts()
-            .then((result)=>{
-                setLoading(false)
-                console.log(result)
-                const productList:ProductSchema[] = result.data as ProductSchema[]
-                console.log(productList)
-                dispatch(setProduct(productList))
-                setProductView(productList)
-            })
-            .catch((e)=>{
-                console.log("error occured")
-                return []
-            })
+        if(products.length > 0){
+            setProductView(products)
+            setLoading(false)
         }
         else{
-            setLoading(false)
-            console.log("now here")
+            setLoading(true)
         }
 
-    }, [])
+    }, [products])
+
+
 
     const deleteProduct = (id:number) => {
 

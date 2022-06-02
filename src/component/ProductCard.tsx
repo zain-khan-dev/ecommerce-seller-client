@@ -12,7 +12,6 @@ interface Prop {
 const ProductCard:React.FC<Prop> = ({product, deleteFunc}) => {
 
 
-    console.log(product)
 
     const handleDelete = () => {
 

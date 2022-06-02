@@ -1,9 +1,10 @@
 import axios, { AxiosResponse, AxiosPromise, AxiosInstance, AxiosRequestHeaders } from "axios"
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { setProduct } from "../reducer/ProductSlice"
 import { RootState } from "../reducer/store"
-import {BASE_URL} from "./Constants"
+import {BASE_URL, ProductSchema} from "./Constants"
 
 export const getAxiosInstance = ():AxiosInstance    => {
 
@@ -112,3 +113,27 @@ export const useAuthenticator = () => {
 
 }
 
+export const useProductFetch = () => {
+
+    const dispatch = useDispatch()
+
+    let productsList:ProductSchema[] = useSelector((state:RootState)=>state.products.productList)
+
+
+    if(productsList.length === 0){
+        getProducts()
+            .then((result)=>{
+            productsList = result.data as ProductSchema[]
+            dispatch(setProduct(productsList))
+        })
+        .catch((e)=>{
+            console.log("error occured")
+            return []
+        })
+    }
+    else{
+        console.log("using cached version")
+    }
+    return productsList
+
+}

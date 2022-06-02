@@ -4,7 +4,7 @@ import {RootState} from "../reducer/store"
 import { useLocation, useParams } from "react-router-dom"
 import {useState} from "react"
 import axios from "axios"
-import { putAuthData, useAuthenticator } from "../utils/utilityFunc"
+import { putAuthData, useAuthenticator, useProductFetch } from "../utils/utilityFunc"
 import { useEffect } from "react"
 import { Formik, Form, Field } from "formik"
 import { CATEGORY_MAPPING } from "../utils/Constants"
@@ -13,16 +13,30 @@ const ProductEdit = () => {
 
 
     const isLogged = useAuthenticator()
+    let products = useProductFetch()
 
-    let products = useSelector((state: RootState) => state.products).productList
+    const {id} = useParams() 
 
+    const [currentProduct, setCurrentProduct] = useState<ProductSchema|null>(null)
+
+    console.log("Inside product edit")
     console.log(products)
 
-    const {id} = useParams()
+    useEffect(()=>{
+
+        if(id)
+            setCurrentProduct(products.filter((product)=>product.id === parseInt(id))[0])
+
+    }, [products])
 
 
-    const currentProduct = products.filter(x => x.id === parseInt(id as string))[0]
+    if(!id){
+        return <div>404</div>
+    }
 
+    if(currentProduct == null){
+        return <div>Loading</div>
+    }
 
     return (
         <div>
