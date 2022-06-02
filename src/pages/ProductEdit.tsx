@@ -7,6 +7,7 @@ import axios from "axios"
 import { putAuthData } from "../utils/utilityFunc"
 import { useEffect } from "react"
 import { Formik, Form, Field } from "formik"
+import { CATEGORY_MAPPING } from "../utils/Constants"
 
 const ProductEdit = () => {
 
@@ -38,6 +39,9 @@ const ProductEdit = () => {
     //     })
     // }
 
+    console.log()
+
+
     return (
         <div>
             <div className="flex flex-col w-1/3 mx-auto mt-4">
@@ -49,10 +53,19 @@ const ProductEdit = () => {
                         stock:currentProduct.stock,
                         price:currentProduct.price,
                         discount: currentProduct.stock,
+                        category:currentProduct.category
                     }}
                     onSubmit={async (values) => {
-                        await new Promise((r) => setTimeout(r, 500));
+
                         alert(JSON.stringify(values, null, 2));
+                        putAuthData(`/product/${currentProduct.id}/`, {...currentProduct, ...values})
+                        .then((result)=>{
+                            console.log(result)
+
+                        })
+                        .catch((e)=>{
+                            console.log(e)
+                        })
                     }}
                     >
                     <Form className="flex flex-col">
@@ -66,7 +79,12 @@ const ProductEdit = () => {
                         <Field className="block mb-2 p-2 shadow-xl rounded-xl bg-gray-100 w-full"  name="price" id="price" />
                         <label className="block mt-2 text-lg font-semibold p-2">Discount</label>
                         <Field className="block mb-2 p-2 shadow-xl rounded-xl bg-gray-100 w-full" name="discount" id="discount" />
+                        <label className="block mt-2 text-lg font-semibold p-2">Category</label>
+                        <Field as="select" name="category" id="category">s
+                            {Object.keys(CATEGORY_MAPPING).map((product)=><option value={CATEGORY_MAPPING[product]}>{product}</option>)}
+                        </Field>
                         <button type="submit" className="bg-yellow-600 w-fit px-5 py-2 my-4 text-white rounded-xl shadow-xl mx-auto">Submit</button>
+                    
                     </Form>
                     </Formik>
             </div>

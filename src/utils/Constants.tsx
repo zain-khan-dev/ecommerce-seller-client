@@ -15,7 +15,8 @@ export interface ProductSchema {
     description:string;
     stock:number;
     price:number;
-    images:ImageSchema[]
+    images:ImageSchema[],
+    category:String;
 }
 
 
@@ -62,3 +63,35 @@ export interface UserLoginDetails {
 }
 
 export const TOTAL_PHOTOS_ALLOWED = 7
+
+
+export const CATEGORY_MAPPING:any = {
+    'appliances':'Appli',
+    'apps':'Apps ',
+    'arts':'Arts',
+    'auto':'Auto',
+    'baby':'Baby',
+    'beauty':'Beaut',
+    'books':'Books',
+    'cd':'CDs',
+    'phones':'Cell',
+    'cloths':'Cloth',
+    'collectibles':'Colle',
+    'computers':'Compu',
+    'electronics':'Elect',
+    'garden':'Garde',
+    'grocery':'Groce',
+    'handmade':'Handm',
+    'health':'Healt',
+    'home':'Home',
+    'industry':'Indus',
+    'luggage':'Lugga',
+    'movies':'Movie',
+    'instruments':'Music',
+    'office':'Offic',
+    'pet':'Pet',
+    'sports':'Sport',
+    'tools':'Tools',
+    'toys':'Toys',
+    'games':'Video',
+}
