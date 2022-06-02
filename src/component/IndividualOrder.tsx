@@ -1,6 +1,7 @@
 import { OrderSchema } from "../utils/Constants"
 import {FC} from "react"
 import {NEXT_STATUS_MAPPING, ORDER_STATUS}from "../utils/Constants"
+import { putAuthData } from "../utils/utilityFunc"
 
 interface Prop {
     order:OrderSchema
@@ -20,6 +21,15 @@ const IndividualOrder:FC<Prop> = ({order}) => {
     const next_status_name = ORDER_STATUS.filter((order)=> order.key===next_status)[0].name
 
     const handleStatusChange = () => {
+
+        console.log("change the status to PL")
+        putAuthData(`/orders/${order.id}/`, {...order, product_id:order.product_id.id, status:next_status})
+        .then((result)=>{
+            console.log("Changed the status to "+ next_status)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
 
     }
 
