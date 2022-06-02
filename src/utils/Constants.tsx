@@ -23,12 +23,13 @@ export interface ProductSchema {
 export interface OrderSchema {
     status:string;
     order_ts:string;
-    bought_at:number;
+    id:string;
+    price:number;
     quantity:number;
     product_id: ProductSchema
 }
 
-export const orderStatus = [
+export const ORDER_STATUS = [
     {key:"PE", name:"Order Pending"},
     {key:"PL", name:"Order Placed"},
     {key:"OFD", name:"Out For Delivery"},
@@ -45,6 +46,16 @@ export interface UserRegisterDetails {
     name:string
     phone_number:string
 }
+
+
+export const NEXT_STATUS_MAPPING:any = {
+    "PE":"PL",
+    "PL":"PKD",
+    "PKD":"SHP",
+    "SHP":"OFD",
+    "OFD":"CMP"
+}
+
 
 export interface UserLoginDetails {
     username:string, password:string
