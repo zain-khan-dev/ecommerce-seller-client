@@ -65,7 +65,7 @@ const IndividualOrder:FC<Prop> = ({order}) => {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={handleStatusChange} className="bg-yellow-600 px-3 py-2 rounded-xl shadow-xl text-white mx-auto">{"Change to "  + next_status_name}</button>
+            <button onClick={handleStatusChange} className="bg-green-600 px-3 py-2 rounded-xl shadow-xl text-white mx-auto">{"Change to "  + next_status_name}</button>
         </div>
     )
 }

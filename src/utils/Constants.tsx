@@ -17,6 +17,7 @@ export interface ProductSchema {
     price:number;
     images:ImageSchema[],
     category:String;
+    discount:number;
 }
 
 

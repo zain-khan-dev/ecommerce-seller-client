@@ -24,27 +24,6 @@ const ProductEdit = () => {
     const currentProduct = products.filter(x => x.id === parseInt(id as string))[0]
 
 
-    // const [name, setName] = useState(currentProduct.name)
-    // const [description, setDescription] = useState(currentProduct.description)
-    // const [stock, setStock] = useState(currentProduct.stock)
-    // const [price, setPrice] = useState(currentProduct.price)
-    // const [discount, setDiscount] = useState
-
-    // const handleUpdate = () => {
-    //     console.log(name, description, stock, price)
-
-    //     putAuthData(`product/${currentProduct.id}/`, {name, description, stock, price})
-    //     .then((result)=>{
-    //         console.log("Successfully updated the product "+ result)
-    //     })
-    //     .catch((e)=>{
-    //         console.log("Failed with error "+ e)
-    //     })
-    // }
-
-    console.log()
-
-
     return (
         <div>
             <div className="flex flex-col w-1/3 mx-auto mt-4">
@@ -55,12 +34,11 @@ const ProductEdit = () => {
                         description: currentProduct.description,
                         stock:currentProduct.stock,
                         price:currentProduct.price,
-                        discount: currentProduct.stock,
+                        discount: currentProduct.discount,
                         category:currentProduct.category
                     }}
                     onSubmit={async (values) => {
 
-                        alert(JSON.stringify(values, null, 2));
                         putAuthData(`/product/${currentProduct.id}/`, {...currentProduct, ...values})
                         .then((result)=>{
                             console.log(result)
