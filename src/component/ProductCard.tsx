@@ -31,7 +31,7 @@ const ProductCard:React.FC<Prop> = ({product, deleteFunc}) => {
                 {product.description.substring(0, 25)} ... 
             </div>
             <div className="flex flex-row mt-4 ">
-                <div className="bg-yellow-500 px-4 py-1 rounded text-black" ><Link to="/productEdit/1" >Edit</Link></div>
+                <div className="bg-yellow-500 px-4 py-1 rounded text-black" ><Link to={`/productEdit/${product.id}`} >Edit</Link></div>
                 <button onClick={handleDelete} className="ml-8 bg-red-500 text-white px-4 py-1 rounded" >Delete</button>
             </div>
         </div>

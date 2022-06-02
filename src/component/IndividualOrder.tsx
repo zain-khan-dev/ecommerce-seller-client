@@ -35,7 +35,7 @@ const IndividualOrder:FC<Prop> = ({order}) => {
 
 
     return (
-        <div className="flex flex-col bg-white p-2 my-2 shadow-xl rounded-xl ">
+        <div className="flex flex-col bg-white p-2 my-2 shadow-xl rounded-xl w-2/5 mx-auto">
             <div className="text-sm">Order ID {order.id}</div>
             <table className="table-auto  text-center">
                 <tbody className="p-2">
